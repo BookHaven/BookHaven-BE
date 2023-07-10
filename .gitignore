@@ -1,0 +1,27 @@
+# Ignore the Python compiled files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*/__pycache__
+
+# Ignore log files
+*.log
+
+# Ignore the SQLite database files
+*.sqlite3
+db.sqlite3
+
+# Ignore the secret key file (if you have one)
+secret_key.txt
+
+# Ignore all .env files
+*.env
+
+# Ignore all migrations files 
+# Un-comment the line below if you want to ignore them
+#*/migrations/*
+
+# Ignore other files typically not committed
+.DS_Store
+*~
