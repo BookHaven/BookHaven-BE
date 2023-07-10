@@ -1,0 +1,7 @@
+coverage
+django
+django-cors-headers
+djangorestframework
+psycopg2
+pytest
+requests
