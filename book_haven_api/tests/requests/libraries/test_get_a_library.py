@@ -100,4 +100,4 @@ def test_get_a_library_sad(Libraries, Books):
     assert 'detail' in response.json()['errors'][0]
     assert response.json()['errors'][0]['status'] == '404'
     assert response.json()['errors'][0]['title'] == 'Library not found'
-    assert response.json()['errors'][0]['detail'] == 'The library with id 5 does not exist.'
+    assert response.json()['errors'][0]['detail'] == 'The library with id 5 does not exist.'  # noqa: E501
