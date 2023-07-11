@@ -88,7 +88,6 @@ def test_get_a_library_sad(Libraries, Books):
     url = reverse('get_a_library', kwargs={'library_id': 5})
     response = client.get(url)
 
-    # breakpoint()
     assert response.status_code == 404
     assert type(response.json()) is dict
     assert 'errors' in response.json()
