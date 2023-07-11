@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,10 +82,10 @@ WSGI_APPLICATION = 'book_haven.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'book_haven',
-        'USER': 'bookhaven',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'NAME': 'den4ellofdgb08',
+        'USER': 'xjdilvpingmoit',
+        'PASSWORD': env('DATABASE_PASSWORD'),
+        'HOST': 'ec2-3-92-151-217.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
