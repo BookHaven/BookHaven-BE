@@ -60,27 +60,34 @@ def Books(Libraries):
     return book1, book2, book3
 
 @pytest.mark.django_db
-def test_get_library_books(Libraries, Books):
-    print('test_get_library_books')
+def test_destroy_book(Libraries, Books):
+    print('test_destroy_book')
+    library1, library2 = Libraries
+    book1, book2, book3 = Books
     client = APIClient()
-    url = reverse('get_library_books', kwargs={'library_id': 1})
-    # breakpoint()
-    response = client.get(url)
-    assert response.status_code == 200
-    assert Book.objects.count() == 3
-    assert type(response.json()) is dict
-    assert 'data' in response.json()
-    assert type(response.json()['data']) is list
+    url = reverse('destroy_book', kwargs={'library_id': library1.id, 'book_id': book1.id})
+    response = client.delete(url)
+    assert response.status_code == 204
+    assert Book.objects.count() == 2
+    assert Book.objects.filter(id=book1.id).count() == 0
+    assert Book.objects.filter(id=book2.id).count() == 1
+    assert Book.objects.filter(id=book3.id).count() == 1
 
-    for book in response.json()['data']:
-        assert 'id' in book
-        assert 'type' in book
-        assert book['type'] == "book"
-        assert 'attributes' in book
-        assert 'isbn' in book['attributes']
-        assert 'book_image' in book['attributes']
-        assert 'description' in book['attributes']
-        assert 'title' in book['attributes']
-        assert 'author' in book['attributes']
-        assert 'genre' in book['attributes']
-        assert 'library_id' in book['attributes']
+@pytest.mark.django_db
+def test_destroy_book_sad():
+    print('test_destroy_book_sad')
+    client = APIClient()
+    url = reverse('destroy_book', kwargs={'library_id': 1, 'book_id': 1})
+    response = client.delete(url)
+    assert response.status_code == 404
+    assert type(response.json()) is dict
+    assert 'errors' in response.json()
+    assert type(response.json()['errors']) is list
+    assert len(response.json()['errors']) == 1
+    assert type(response.json()['errors'][0]) is dict
+    assert 'status' in response.json()['errors'][0]
+    assert 'title' in response.json()['errors'][0]
+    assert 'detail' in response.json()['errors'][0]
+    assert response.json()['errors'][0]['status'] == '404'
+    assert response.json()['errors'][0]['title'] == 'Book not found'
+    assert response.json()['errors'][0]['detail'] == 'The book with id 1 does not exist.'  # noqa: E501
