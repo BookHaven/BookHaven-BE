@@ -17,7 +17,7 @@ class Library(models.Model):
 
 class Book(models.Model):
     isbn = models.CharField(max_length=13)
-    book_image = models.CharField(max_length=100)
+    book_image = models.CharField()
     description = models.TextField()
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
