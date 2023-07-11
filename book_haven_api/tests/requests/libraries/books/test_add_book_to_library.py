@@ -20,8 +20,8 @@ def Libraries():
 
 
 @pytest.mark.django_db
-def test_add_book(Libraries):
-    print('add_book_happy_path')
+def test_add_book_to_library(Libraries):
+    print('add_book_to_library_happy_path')
     library1 = Libraries
     url = reverse('get_library_books', kwargs={'library_id': library1.id})
     client = APIClient()
@@ -41,8 +41,8 @@ def test_add_book(Libraries):
     assert library1.book_set.count() == 1
 
 @pytest.mark.django_db
-def test_add_book_invalid_isbn(Libraries):
-    print('add_book_sad_path_invalid_isbn')
+def test_add_book_to_library_invalid_isbn(Libraries):
+    print('add_book_to_library_sad_path_invalid_isbn')
     library1 = Libraries
     url = reverse('get_library_books', kwargs={'library_id': library1.id})
     client = APIClient()
