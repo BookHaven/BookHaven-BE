@@ -25,3 +25,6 @@ secret_key.txt
 # Ignore other files typically not committed
 .DS_Store
 *~
+
+# Ignore pytest-cov coverage reports
+.coverage
