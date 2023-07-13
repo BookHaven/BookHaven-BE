@@ -8,7 +8,9 @@ on:
 
 jobs:
   build:
-
+    env:
+      MY_API_KEY: ${{secrets.MY_API_KEY}}
+      DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
