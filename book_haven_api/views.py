@@ -34,7 +34,7 @@ def get_library_books(request, library_id):
         serializer = BookSerializer(books, many=True)
         return Response({ "data": serializer.data }, status=status.HTTP_200_OK)
     
-    elif request.method == 'POST':
+    if request.method == 'POST':
         library = Library.objects.get(id=library_id)
         api_key = config('MY_API_KEY')
         url = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + request.data['isbn'] + '&key=' + api_key
@@ -46,18 +46,17 @@ def get_library_books(request, library_id):
                 "detail": "Book could not be created because ISBN not found."
             }]},status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         
-        else:
-            book = Book.objects.create(
-                isbn=request.data['isbn'],
-                book_image=response.json()['items'][0]['volumeInfo']['imageLinks']['thumbnail'],
-                description=response.json()['items'][0]['volumeInfo']['description'],
-                title=response.json()['items'][0]['volumeInfo']['title'],
-                author=response.json()['items'][0]['volumeInfo']['authors'][0],
-                genre=response.json()['items'][0]['volumeInfo']['categories'][0],
-                library=library,
-            )
-            serializer = BookSerializer(book, many=False)
-            return Response({ "data": serializer.data }, status=status.HTTP_201_CREATED)
+        book = Book.objects.create(
+            isbn=request.data['isbn'],
+            book_image=response.json()['items'][0]['volumeInfo']['imageLinks']['thumbnail'],
+            description=response.json()['items'][0]['volumeInfo']['description'],
+            title=response.json()['items'][0]['volumeInfo']['title'],
+            author=response.json()['items'][0]['volumeInfo']['authors'][0],
+            genre=response.json()['items'][0]['volumeInfo']['categories'][0],
+            library=library,
+        )
+        serializer = BookSerializer(book, many=False)
+        return Response({ "data": serializer.data }, status=status.HTTP_201_CREATED)
 
 @api_view(['DELETE'])
 def destroy_book(request, library_id, book_id):
