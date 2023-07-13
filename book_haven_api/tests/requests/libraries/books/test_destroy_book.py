@@ -4,9 +4,8 @@ from rest_framework.test import APIClient
 from book_haven_api.models import Library, Book
 
 @pytest.fixture
-def Libraries():
-    library1 =  Library.objects.create(
-        id=1,
+def libraries():
+    library_1 =  Library.objects.create(
         name='Library1',
         street='1234 Library1 St.',
         city='Library1 City',
@@ -15,7 +14,7 @@ def Libraries():
         lat=123.456,
         lon=123.456,
     )
-    library2 = Library.objects.create(
+    library_2 = Library.objects.create(
         name='Library2',
         street='1234 Library2 St.',
         city='Library2 City',
@@ -25,11 +24,11 @@ def Libraries():
         lon=123.456,
     )
   
-    return library1, library2
+    return library_1, library_2
 
 @pytest.fixture
-def Books(Libraries):
-    library1, library2 = Libraries
+def Books(libraries):
+    library_1, library_2 = libraries
     book1 = Book.objects.create(
         isbn='1234567890123',
         book_image='https://bookhaven.com/book1.jpg',
@@ -37,7 +36,7 @@ def Books(Libraries):
         title='Book1',
         author='Author1',
         genre='Genre1',
-        library=library1,
+        library=library_1,
     )
     book2 = Book.objects.create(
         isbn='1234567890124',
@@ -46,7 +45,7 @@ def Books(Libraries):
         title='Book2',
         author='Author2',
         genre='Genre2',
-        library=library1,
+        library=library_1,
     )
     book3 = Book.objects.create(
         isbn='1234567890125',
@@ -55,17 +54,17 @@ def Books(Libraries):
         title='Book3',
         author='Author3',
         genre='Genre3',
-        library=library2,
+        library=library_2,
     )
     return book1, book2, book3
 
 @pytest.mark.django_db
-def test_destroy_book(Libraries, Books):
+def test_destroy_book(libraries, Books):
     print('test_destroy_book')
-    library1, library2 = Libraries
+    library_1, library_2 = libraries
     book1, book2, book3 = Books
     client = APIClient()
-    url = reverse('destroy_book', kwargs={'library_id': library1.id, 'book_id': book1.id})
+    url = reverse('destroy_book', kwargs={'library_id': library_1.id, 'book_id': book1.id})
     response = client.delete(url)
     assert response.status_code == 204
     assert Book.objects.count() == 2
@@ -74,10 +73,11 @@ def test_destroy_book(Libraries, Books):
     assert Book.objects.filter(id=book3.id).count() == 1
 
 @pytest.mark.django_db
-def test_destroy_book_sad():
+def test_destroy_book_sad(libraries):
     print('test_destroy_book_sad')
+    library_1, library_2 = libraries
     client = APIClient()
-    url = reverse('destroy_book', kwargs={'library_id': 1, 'book_id': 1})
+    url = reverse('destroy_book', kwargs={'library_id': library_1.id, 'book_id': 1})
     response = client.delete(url)
     assert response.status_code == 404
     assert type(response.json()) is dict

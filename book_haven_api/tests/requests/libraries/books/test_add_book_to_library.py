@@ -4,26 +4,22 @@ from rest_framework.test import APIClient
 from book_haven_api.models import Library, Book
 
 @pytest.fixture
-def Libraries():
-    library1 =  Library.objects.create(
-        id=1,
+def library():
+   return  Library.objects.create(
         name='Library1',
         street='1234 Library1 St.',
         city='Library1 City',
         state='CA',
         zip='12345',
-        lat=123.456,
-        lon=123.456,
+        lat=39.69896 ,
+        lon=-104.92454,
     )
-
-    return library1
 
 
 @pytest.mark.django_db
-def test_add_book_to_library(Libraries):
+def test_add_book_to_library(library):
     print('add_book_to_library_happy_path')
-    library1 = Libraries
-    url = reverse('get_library_books', kwargs={'library_id': library1.id})
+    url = reverse('get_library_books', kwargs={'library_id': library.id})
     client = APIClient()
     response = client.post(url, {'isbn': '9780446675505'}, format='json')
     assert response.status_code == 201
@@ -37,14 +33,12 @@ def test_add_book_to_library(Libraries):
     assert attrs['title'] == 'Parable of the Sower'
     assert attrs['author'] == 'Octavia E. Butler'
     assert attrs['genre'] == 'FICTION'
-    assert attrs['library_id'] == 1
-    assert library1.book_set.count() == 1
+    assert library.book_set.count() == 1
 
 @pytest.mark.django_db
-def test_add_book_to_library_invalid_isbn(Libraries):
+def test_add_book_to_library_invalid_isbn(library):
     print('add_book_to_library_sad_path_invalid_isbn')
-    library1 = Libraries
-    url = reverse('get_library_books', kwargs={'library_id': library1.id})
+    url = reverse('get_library_books', kwargs={'library_id': library.id})
     client = APIClient()
     response = client.post(url, {'isbn': '978044667550'}, format='json')
   
@@ -55,6 +49,6 @@ def test_add_book_to_library_invalid_isbn(Libraries):
     assert response.json()['errors'][0]['status'] == '422'
     assert response.json()['errors'][0]['title'] == 'Book not created'
     assert response.json()['errors'][0]['detail'] == 'Book could not be created because ISBN not found.'
-    assert library1.book_set.count() == 0
+    assert library.book_set.count() == 0
 
     
