@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import sys
 from pathlib import Path
 import environ
 env = environ.Env()
@@ -95,6 +96,19 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+if os.getenv('DJANGO_TEST', False):
+    print('Test environment detected')
+    DATABASES = {
+        'default': {
+           'ENGINE': 'django.db.backends.postgresql',
+           'NAME': 'book_haven',
+           'USER': 'bookhaven',
+           'PASSWORD': 'password',
+           'HOST': 'localhost',
+           'PORT': '5432',
+        }
+    }
 
 if os.environ.get('GITHUB_WORKFLOW'):
     DATABASES = {
