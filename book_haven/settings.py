@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,8 +30,10 @@ SECRET_KEY = 'django-insecure-$wx##0-or+5-h5n%1i=z8m_w8_#3g#)=l&my+*o29+ypv_(rwf
 DEBUG = True
 
 ALLOWED_HOSTS = ['book-haven-be-29aa9bd8a3c7.herokuapp.com']
+
 CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWED_ORIGINS = [‘*’]
+
 
 
 # Application definition
@@ -83,10 +88,10 @@ WSGI_APPLICATION = 'book_haven.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'book_haven',
-        'USER': 'bookhaven',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'NAME': 'den4ellofdgb08',
+        'USER': 'xjdilvpingmoit',
+        'PASSWORD': env('DATABASE_PASSWORD'),
+        'HOST': 'ec2-3-92-151-217.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
