@@ -31,6 +31,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['book-haven-be-29aa9bd8a3c7.herokuapp.com']
 
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [‘*’]
+
+
 
 # Application definition
 
@@ -43,9 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'book_haven_api',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

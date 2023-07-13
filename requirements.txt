@@ -15,6 +15,7 @@ psycopg2==2.9.6
 pytest==7.4.0
 pytest-cov==4.1.0
 pytest-django==4.5.2
+python-decouple==3.8
 pytz==2023.3
 requests==2.31.0
 sqlparse==0.4.4
