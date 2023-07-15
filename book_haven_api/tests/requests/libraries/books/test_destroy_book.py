@@ -66,11 +66,15 @@ def test_destroy_book(libraries, Books):
     client = APIClient()
     url = reverse('destroy_book', kwargs={'library_id': library_1.id, 'book_id': book1.id})
     response = client.delete(url)
-    assert response.status_code == 204
+    assert response.status_code == 200
     assert Book.objects.count() == 2
     assert Book.objects.filter(id=book1.id).count() == 0
     assert Book.objects.filter(id=book2.id).count() == 1
     assert Book.objects.filter(id=book3.id).count() == 1
+    assert type(response.json()['data']) is dict
+    assert response.json()['data']['id'] == book1.id
+    assert response.json()['data']['detail'] == f'The book with id {book1.id} was deleted.'
+ 
 
 @pytest.mark.django_db
 def test_destroy_book_sad(libraries):
