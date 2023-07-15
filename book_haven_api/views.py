@@ -63,7 +63,10 @@ def destroy_book(request, library_id, book_id):
     try:
         book = Book.objects.get(id=book_id)
         book.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({ "data": {
+            "id": book_id,
+            "detail": "The book with id " + str(book_id) + " was deleted."
+        }},status=status.HTTP_200_OK )
     except Book.DoesNotExist:
         return Response({"errors": [{
             "status": "404",
