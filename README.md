@@ -45,7 +45,7 @@ Check out our front end repository: [![Github][Github]][project-fe-gh-url]
 <!-- BUILT WITH -->
 ### Built With
 
-* [![python][python]][python-url]
+* [![python][python]][python-url] V: 3.11.4
 * [![Django][Django]][Django-url]
 * [![Pytest][Pytest]][pytest-url]
 * [![PostgreSQL][Postgres]][Postgres-url]
@@ -86,7 +86,23 @@ Check out our front end repository: [![Github][Github]][project-fe-gh-url]
     - Open the PostgreSQL interactive terminal with `psql` .
     - Enter `\l` to show the list of all databases where you should see `book_haven` or the name you chose listed.
 
+### Install version 3.11.4 of python with HomeBrew
+- Follow [these](https://www.pythoncentral.io/installing-python-on-mac-using-homebrew/) instructions. 
 <!-- steps to run the application locally -->
+### Clone the repository
+- Step 1: In a terminal window, navigate to a directory where you would like the project to live. 
+- Step 2: Run `git clone git@github.com:BookHaven/BookHaven-BE.git`
+### Setup virtual environment
+- Step 1: In a terminal window, navigate just outside of the project directory. 
+- Step 2: Create an environment.
+  - run `python3 -m venv <name_of_environment>` 
+- Step 3: Activate environment. 
+  - run `source <name_of_environment>/bin/activate`
+    - In your terminal you should now see something like 
+      ```
+      (<name_of_environment>)
+      ```
+
 
 
 <!-- DATABASE SCHEMA -->
