@@ -52,6 +52,37 @@ Check out our front end repository: [![Github][Github]][project-fe-gh-url]
 
 <!-- GETTING STARTED -->
 ## Getting Started
+### Setting up a local Postgresql database (rough draft)
+- Step 1: Install PostgreSQL with HomeBrew
+  - Follow [these](https://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/) instructions.
+- Step 2: Create a new user in the PostgreSQL interactive terminal
+  > **_Note:_** If you would like to immediately utilize this repository without altering database code follow the instructions below.  If you would like to use your own username/password skip to step 3.
+
+  - Open the PostgreSQL interactive terminal.
+    - In a terminal window type `psql` .
+    - You should see:
+    ```
+    psql (14.8 (Homebrew))
+    username=#
+  - Next create a new username and password and give this new user access to create a database.
+    ```
+    username=# CREATE USER bookhaven WITH PASSWORD 'password';
+    username=# ALTER USER bookhaven CREATEDB;
+    ```
+- Step 3: Create the database
+  - Exit out of the interactive terminal by entering `\q` .
+  - If you followed the steps above enter:
+    ```
+    createdb -U bookhaven -W book_haven
+    ```
+      - It should ask you for your password which will be `password` .
+  - If you want to use your own username and custom database name enter:
+    ```
+    createdb <name_of_database>
+    ```
+  - Check to make sure the database was created. 
+    - Open the PostgreSQL interactive terminal with `psql` .
+    - Enter `\l` to show the list of all databases where you should see `book_haven` or the name you chose listed.
 
 <!-- steps to run the application locally -->
 
