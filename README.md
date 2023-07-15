@@ -4,9 +4,11 @@
 [stars-shield][stars-url]
 [issues-url]
 -->
-
-# BookHaven
-
+<div align="center">
+    <img src="https://github.com/BookHaven/BookHaven-BE/assets/120225785/10a11ac0-fbc8-4dd4-9688-9d5e090a3912" alt="Logo" width="700" height="175">
+  </a>
+</div>
+<br>
   <p align="center">
     BookHaven is a web application built for the Turing School of Software and Design's Mod 4 Capstone project. Read more about project requirements: https://mod4.turing.edu/projects/capstone/
     <br />
@@ -123,9 +125,15 @@ Check out our front end repository: [![Github][Github]][project-fe-gh-url]
 * [Turing School of Software and Design](https://turing.io/)
 * [Little Free Libraries](https://littlefreelibrary.org/)
 
+<div align="center">
+    <img src="https://github.com/BookHaven/BookHaven-BE/assets/120225785/6081c2b9-8ba5-48c9-be0f-a9618104d0d6" alt="Logo" width="675" height="700">
+  </a>
+</div>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[bookhaven-logo]: https://github.com/BookHaven/BookHaven-BE/assets/120225785/4b2c5f42-5820-4171-a0b9-aa48bd5f42e4
+[bookhaven-library]: https://github.com/BookHaven/BookHaven-BE/assets/120225785/ee11b767-2ee8-430d-bcf4-f72d1ceae806
 [contributors-shield]: https://img.shields.io/github/contributors/BookHaven/BookHaven-BE.svg?style=for-the-badge
 [contributors-url]: https://github.com/BookHaven/BookHaven-BE/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/BookHaven/BookHaven-BE.svg?style=for-the-badge
