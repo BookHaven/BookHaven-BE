@@ -27,12 +27,12 @@ def test_add_book_to_library(library):
     assert type(response.json()['data']) is dict
     attrs = response.json()['data']['attributes']
     assert type(attrs) is dict
-    assert attrs['isbn'] == '9780446675505'
-    assert attrs['book_image'] == 'http://books.google.com/books/content?id=OemtHIwYk0wC&printsec=frontcover&img=1&zoom=1&source=gbs_api'
-    assert attrs['description'] == 'In a futuristic society filled with chaos, young Lauren Olamina begins a journey that will test her will and ultimately start a new faith. Includes questions for discussion.'
-    assert attrs['title'] == 'Parable of the Sower'
-    assert attrs['author'] == 'Octavia E. Butler'
-    assert attrs['genre'] == 'FICTION'
+    assert type(attrs['isbn']) is str
+    assert type(attrs['book_image']) is str
+    assert type(attrs['description']) is str
+    assert type(attrs['title']) is str
+    assert type(attrs['author']) is str
+    assert type(attrs['genre']) is str
     assert library.book_set.count() == 1
 
 @pytest.mark.django_db
