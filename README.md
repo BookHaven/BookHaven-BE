@@ -13,7 +13,7 @@
     Read more about project requirements <a href=project-requirements>here</a>.
     <br />
     <br />
-    Check out our <a href=FE-deployment>deployed website</a>!
+    Check out our <a href='https://the-book-haven.vercel.app'>deployed website</a>!
   </p>
 
 
@@ -436,7 +436,7 @@ To run the test suite, run `pytest` in the terminal. You should have 8 passing t
 [bookhaven-logo]: https://github.com/ResidentMario/missingno/assets/105441393/1b76aa4d-80a8-400b-97fc-792e83bcc2ce
 [bookhaven-library]: https://github.com/ResidentMario/missingno/assets/105441393/31d504e0-593a-4317-9707-470c37be2851
 [project-requirements]: https://mod4.turing.edu/projects/capstone/
-[FE-deployment]: the-book-haven.vercel.app
+[FE-deployment]: https://the-book-haven.vercel.app
 [contributors-shield]: https://img.shields.io/github/contributors/BookHaven/BookHaven-BE.svg?style=for-the-badge
 [contributors-url]: https://github.com/BookHaven/BookHaven-BE/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/BookHaven/BookHaven-BE.svg?style=for-the-badge
