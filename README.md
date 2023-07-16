@@ -110,7 +110,7 @@ Check out our front end repository: [![Github][Github]][project-fe-gh-url]
     - all dependencies and versions will be loaded into your virtual environment. 
 
 ### Connect local database to application
-> **_Note:_** If you followed 'Setting up a local Postgresql database' completely continue to step #.  If you used the default user to create the local database continue to step 1. 
+> **_Note:_** If you followed 'Setting up a local Postgresql database' completely continue to step 2.  If you used the default user to create the local database continue to step 1. 
 - Step 1: Update the settings file with your database credentials
   - Open the repository in your code editor of choice and navigate to 'book_haven/settings.py'
   - Scroll down to _'DATABASES'_ and change the following in the _'os.getenv('DJANGO_TEST')'_ section. 
