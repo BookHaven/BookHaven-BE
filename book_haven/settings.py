@@ -32,8 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['book-haven-be-29aa9bd8a3c7.herokuapp.com']
 
-CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = [‘*’]
+# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = ['https://the-book-haven.vercel.app/', 'http://localhost:3000/']
 
 
 
