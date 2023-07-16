@@ -38,7 +38,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About the Project
 
-Welcome to Bookhaven! We have designed this software to streamline the inventory management of Little Free Libraries. We aim to connect books to readers in the most efficient way possible. Our application allows you to keep track of books in your library and explore the books in libaries near you, ensuring that each story finds a reader. For more information, visit Little Free Library at [LittleFreeLibrary.org](https://littlefreelibrary.org/).
+Welcome to Bookhaven! We have designed this software to streamline the inventory management of Little Free Libraries. We aim to connect books to readers in the most efficient way possible. Our application allows you to keep track of books in your library and explore the books in libaries near you, ensuring that each story finds a reader. For more information about Little Free Library, visit them at [LittleFreeLibrary.org](https://littlefreelibrary.org/).
 
 Check out our front end repository: [![Github][Github]][project-fe-gh-url]
 
