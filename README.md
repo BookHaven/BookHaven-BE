@@ -88,11 +88,13 @@ Check out our front end repository: [![Github][Github]][project-fe-gh-url]
 
 ### Install version 3.11.4 of python with HomeBrew
 - Follow [these](https://www.pythoncentral.io/installing-python-on-mac-using-homebrew/) instructions. 
+
 <!-- steps to run the application locally -->
 ### Clone the repository
 - Step 1: In a terminal window, navigate to a directory where you would like the project to live. 
 - Step 2: Run `git clone git@github.com:BookHaven/BookHaven-BE.git`
-### Setup virtual environment
+
+### Setup virtual environment and install dependencies
 - Step 1: In a terminal window, navigate just outside of the project directory. 
 - Step 2: Create an environment.
   - run `python3 -m venv <name_of_environment>` 
@@ -100,8 +102,36 @@ Check out our front end repository: [![Github][Github]][project-fe-gh-url]
   - run `source <name_of_environment>/bin/activate`
     - In your terminal you should now see something like 
       ```
-      (<name_of_environment>)
+      (<name_of_environment>) /Users/<username>
       ```
+- Step 4: install dependencies
+  - With the virtual environment still running navigate inside of the BookHaven directory
+  - run `pip install -r requirements.txt`
+    - all dependencies and versions will be loaded into your virtual environment. 
+
+### Connect local database to application
+> **_Note:_** If you followed 'Setting up a local Postgresql database' completely continue to step #.  If you used the default user to create the local database continue to step 1. 
+- Step 1: Update the settings file with your database credentials
+  - Open the repository in your code editor of choice and navigate to 'book_haven/settings.py'
+  - Scroll down to _'DATABASES'_ and change the following in the _'os.getenv('DJANGO_TEST')'_ section. 
+  - Change _'NAME'_ to the database name you created. 
+  - change _'USER'_ to your username and change _'PASSWORD'_ to be an empty string `''`
+- Step 2: migrate the database schema to link and create the tables in your local database
+  - In your terminal with the virtual environment running and inside of the BookHaven directory run:
+    ```
+    python manage.py migrate
+    ```
+    - A list of `OK`'s should display
+    - Your local database is now connected and populated with the required tables. 
+- Step 3: Run test suite to verify everything was set up correctly
+  - In your terminal with the virtual environment active and while inside the BookHaven directory run:
+    ```
+    export DATABASE_PASSWORD='1'
+    export DJANGO_TEST=True
+    pytest
+    ```
+      - You should have 8 passing tests
+
 
 
 
