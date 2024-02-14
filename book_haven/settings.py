@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'book_haven.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd47992lb344gj1',
-        'USER': 'mqmddafncpfczc',
+        'NAME': 'deur039hpe75kd',
+        'USER': 'jftvbkiqrpcitq',
         'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': 'ec2-107-21-67-46.compute-1.amazonaws.com',
+        'HOST': 'ec2-3-218-172-130.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
